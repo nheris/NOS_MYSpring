@@ -11,9 +11,22 @@
 </body>
 
 
-<c:forEach items="${not empty dto}">
+<section class="container-fluid">
 
-</c:forEach>
+<div>
+<c:if test="${not empty dto}">
+	<h3>${dto.productNum}</h3>
+	<div>${dto.productName}</div>
+	<div>${dto.productContents}</div>
+	<div>${dto.productRate}</div>
+	<div>${dto.productJumsu}</div>
+</c:if>
+</div>
+<c:if test="${empty dto}">
+<h3>없음</h3>
+</c:if>
+</section>
+
 
 <c:import url="../temps/bootStrap_js.jsp"></c:import>
 </html>

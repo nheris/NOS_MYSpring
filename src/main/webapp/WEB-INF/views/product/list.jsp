@@ -11,7 +11,7 @@
 
 
 
-<table>
+<table class="table table-hover">
 <thead>
 <tr>
 <th>상품번호</th>
@@ -22,11 +22,21 @@
 </tr>
 </thead>
 <tbody>
-<c:forEach items=""></c:forEach>
-</tbody>
 
+<!-- JSTL문, EL문 -->
+<c:forEach items="${list}" var="dto">
+	<tr>
+	<td>${pageScope.dto.productNum}</td>
+	<td><a href="./detail?productNum=${dto.productNum}">${pageScope.dto.productName}</a></td>
+	<td>${pageScope.dto.productContents}</td>
+	<td>${pageScope.dto.productRate}</td>
+	<td>${pageScope.dto.productJumsu}</td>
+	</tr>
+</c:forEach>
+</tbody>
 </table>
 
-</body>
 <c:import url="../temps/bootStrap_js.jsp"></c:import>
+</body>
+
 </html>
