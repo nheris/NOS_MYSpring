@@ -1,14 +1,18 @@
 package com.winter.app.regions;
 
-import java.lang.reflect.Executable;
+//import java.lang.reflect.Executable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import com.winter.app.util.DBConnector;
 
+@Repository
 public class RegionDAO {
 	//update
 	public int update(RegionDTO regionDTO) throws Exception {
