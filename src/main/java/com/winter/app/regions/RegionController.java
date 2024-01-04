@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/regions/*") //이주소해당되면 밑에거 실행
 public class RegionController {
 	//중복되고 여기만 쓰니까 멤버변수,private로 선언
-	private RegionDAO regionDAO;
 	
-	public RegionController() {
-		this.regionDAO = new RegionDAO();
-	}
+	@Autowired
+	private RegionDAO regionDAO;	
+//	public RegionController() { @Autowired써서 안쓸거임
+//		this.regionDAO = new RegionDAO();
+//	}
 	
 	//오버로딩
 	@RequestMapping(value = "add", method = RequestMethod.POST)
