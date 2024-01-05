@@ -18,9 +18,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegionController {
 
 	@Autowired
-	private RegionService reioRegionService;
+	private RegionService regionService;
 	
-	
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public void delete(RegionDTO regionDTO)throws Exception{
+		//허헣
+		//int result = regionService.delete(regionDTO);
+	}
 //	@Autowired
 //	private RegionDAO regionDAO;	
 ////	public RegionController() { @Autowired써서 안쓸거임
@@ -93,7 +97,7 @@ public class RegionController {
 		//1. 직접만듦
 		ModelAndView mv = new ModelAndView();
 		
-		List<RegionDTO> ar = reioRegionService.getList();
+		List<RegionDTO> ar = regionService.getList();
 		//ar을 ㅓjsp보내기?위해
 		
 		mv.addObject("list", ar);//이름 아무거나하고 ar보냄

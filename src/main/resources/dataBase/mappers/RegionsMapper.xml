@@ -6,6 +6,10 @@
   <!-- namespace 값은 중복x -->
   <!-- 해당 mapper를 사용할 DAO의 풀캐키지 명으로 작성 -->
   <mapper namespace="com.winter.app.regions.RegionDAO">
+  
+  	<!-- delete -->
+  	<!-- update -->
+  
 	<!-- detail -->     											<!-- ?에 들어갈 타입 -->
 	<!-- id(구별위해)는 DAO 의 메서드명 -->
 	<select id="getDetail" resultType="com.winter.app.regions.RegionDTO" parameterType="com.winter.app.regions.RegionDTO">
