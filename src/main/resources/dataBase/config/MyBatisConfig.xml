@@ -6,9 +6,8 @@
   <configuration>
   <typeAliases>
   
-  <typeAlias type="com.winter.app.departmants.DepartmentDTO" alias="DepartmentDTO"/>
   <typeAlias type="com.winter.app.regions.RegionDTO" alias="RegionDTO"/>
-  
+  <typeAlias type="com.winter.app.departmants.DepartmentDTO" alias="DepartmentDTO"/>
   
   </typeAliases>
   </configuration>
