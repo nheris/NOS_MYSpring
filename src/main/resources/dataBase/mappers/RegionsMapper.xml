@@ -6,9 +6,18 @@
   <!-- namespace 값은 중복x -->
   <!-- 해당 mapper를 사용할 DAO의 풀캐키지 명으로 작성 -->
   <mapper namespace="com.winter.app.regions.RegionDAO">
-  
-  	<!-- delete -->
+	<!-- delete -->  
+  	
+  	
   	<!-- update -->
+  	
+  	
+  	<!-- insert -->
+  	<insert id="add" parameterType="RegionDTO">
+	  	INSERT INTO REGIONS
+		VALUES (EMPL)
+  	</insert>
+	 
   
 	<!-- detail -->     											<!-- ?에 들어갈 타입 -->
 	<!-- id(구별위해)는 DAO 의 메서드명 -->
@@ -20,4 +29,13 @@
 	<select id="getList" resultType="com.winter.app.regions.RegionDTO">
 		SELECT * FROM REGIONS
 	</select>
+	
+<!-- <select id="getDetail" resultType="java.util.HashMap" parameterType="com.winter.app.regions.RegionDTO">
+		SELECT REGION_ID, REGION_NAME FROM REGIONS WHERE REGION_ID=#{region_id}
+	</select>
+	
+	list
+	<select id="getList" resultType="java.util.HashMap">
+		SELECT * FROM REGIONS
+	</select> ???-->
   </mapper>
