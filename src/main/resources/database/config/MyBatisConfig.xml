@@ -5,7 +5,7 @@
   
   <configuration>
   <typeAliases>
-  
+  <!-- 클래스명 -->
   <typeAlias type="com.winter.app.regions.RegionDTO" alias="RegionDTO"/>
   <typeAlias type="com.winter.app.departments.DepartmentDTO" alias="DepartmentDTO"/>
   

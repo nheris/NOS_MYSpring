@@ -22,46 +22,27 @@ public class RegionDAO {
 	//연결하려는 mapper의 namespace속성의 값과 동일한 값, 끝에 . 추가	
 	private final String namespace="com.winter.app.regions.RegionDAO.";
 	
-	//
+	//delete
+	public int delete(RegionDTO regionDTO) throws Exception {
+		return sqlSession.delete(namespace+"delete", regionDTO);
+	}
+	
+	
 	//update
 	public int update(RegionDTO regionDTO) throws Exception {
-		Connection con = DBConnector.getConnector();
+		return sqlSession.update(namespace+"update", regionDTO);
 		
-		String sql = "UPDATE REGIONS SET REGION_NAME= ? WHERE REGION_ID=?";
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		st.setString(1, regionDTO.getRegion_name());
-		st.setInt(2, regionDTO.getRegion_id());
-		
-		int result = st.executeUpdate(); //1 성공 0실
-		
-		DBConnector.disConnect(st, con);
-		
-		return result;
 	}
 	
 	
 	//Insert
-	public int add(RegionDTO regionDTO) throws Exception{
-		Connection con = DBConnector.getConnector();
-		
-		String sql = "INSERT INTO REGIONS VALUES(?,?)";
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		st.setInt(1, regionDTO.getRegion_id());
-		st.setString(2,regionDTO.getRegion_name());
-		
-		int result = st.executeUpdate();
-		
-		DBConnector.disConnect(st, con);
-		
-		return result;
+	public int add(RegionDTO regionDTO)throws Exception{
+		return sqlSession.insert(namespace+"add", regionDTO);
 	}
 	
 	//Detail, 지역번호로 지역이 조회
 	public RegionDTO getDetail(RegionDTO regionDTO) throws Exception {
+		       //Mapper 보내야하는 parameter가 있을 때
 		return sqlSession.selectOne(namespace+"getDetail", regionDTO);//결과물 하나라 one넣음 selectOne(아이디명)
 		
 		
@@ -71,6 +52,7 @@ public class RegionDAO {
 	
 	//getList, 모든 정보를 출력
 	public List<RegionDTO> getList() throws Exception{
+		       //Mapper 보내야하는 parameter가 없을 때
 		return sqlSession.selectList(namespace+"getList"); //여러개라 list
 		
 		
