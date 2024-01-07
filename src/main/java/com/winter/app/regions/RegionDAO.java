@@ -19,6 +19,7 @@ public class RegionDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	//연결하려는 mapper의 namespace속성의 값과 동일한 값, 끝에 . 추가	
 	private final String namespace="com.winter.app.regions.RegionDAO.";
 	
 	//

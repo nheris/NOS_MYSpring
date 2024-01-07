@@ -11,6 +11,11 @@ public class RegionService {
 	
 	@Autowired
 	private RegionDAO regionDAO;
+	
+	//detail
+	public RegionDTO getDetail(RegionDTO regionDTO) throws Exception {
+		return regionDAO.getDetail(regionDTO);
+	}
 	//list
 	public List<RegionDTO> getList() throws Exception{
 		List<RegionDTO> ar = this.regionDAO.getList();

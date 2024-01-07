@@ -20,10 +20,36 @@ public class RegionController {
 	@Autowired
 	private RegionService regionService;
 	
-	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public void delete(RegionDTO regionDTO)throws Exception{
-		//허헣
-		//int result = regionService.delete(regionDTO);
+	@RequestMapping(value = "detail", method = RequestMethod.GET)
+	//파라미터의 이름과 타입을 동일하게 선언
+	//id
+	public String detail(Integer region_id, Model model) throws Exception {
+		RegionDTO regionDTO = new RegionDTO();
+		//String id = request.getParameter("region_id");
+		
+		regionDTO.setRegion_id(region_id);
+		
+		regionDTO = regionService.getDetail(regionDTO);
+		
+		//request.setAttribute("dto", regionDTO);
+		model.addAttribute("dto", regionDTO);
+		
+		return "regions/detail";
+	}
+	
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public ModelAndView list()throws Exception {
+		//1. 직접만듦
+		ModelAndView mv = new ModelAndView();
+		
+		List<RegionDTO> ar = regionService.getList();
+		//ar을 ㅓjsp보내기?위해
+		
+		mv.addObject("list", ar);//이름 아무거나하고 ar보냄
+		mv.setViewName("regions/list");
+		
+		//return "regions/list";
+		return mv;
 	}
 //	@Autowired
 //	private RegionDAO regionDAO;	
@@ -92,18 +118,5 @@ public class RegionController {
 //	
 	//void, Sting,ModelAndView
 				///regions/list 위에 주소에서 합침
-	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView list()throws Exception {
-		//1. 직접만듦
-		ModelAndView mv = new ModelAndView();
-		
-		List<RegionDTO> ar = regionService.getList();
-		//ar을 ㅓjsp보내기?위해
-		
-		mv.addObject("list", ar);//이름 아무거나하고 ar보냄
-		mv.setViewName("regions/list");
-		
-		//return "regions/list";
-		return mv;
-	}
+
 }
