@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.winter.app.util.Pager;
+
 //DAO 보내기 전 전처리, 후처리
 @Service
 public class RegionService {
@@ -31,8 +33,10 @@ public class RegionService {
 		return regionDAO.getDetail(regionDTO);
 	}
 	//list
-	public List<RegionDTO> getList() throws Exception{
-		List<RegionDTO> ar = this.regionDAO.getList();
+	public List<RegionDTO> getList(Pager pager) throws Exception{
+		pager.makeRow();
+		
+		List<RegionDTO> ar = this.regionDAO.getList(pager);
 		
 		return ar;
 	}

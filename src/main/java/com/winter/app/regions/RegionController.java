@@ -2,16 +2,14 @@ package com.winter.app.regions;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.winter.app.util.Pager;
 
 @Controller
 @RequestMapping(value = "/regions/*") 
@@ -103,11 +101,11 @@ public class RegionController {
 	}
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView list()throws Exception {
+	public ModelAndView list(Pager pager)throws Exception {
 		//1. 직접만듦
 		ModelAndView mv = new ModelAndView();
 		
-		List<RegionDTO> ar = regionService.getList();
+		List<RegionDTO> ar = regionService.getList(pager);
 		//ar을 ㅓjsp보내기?위해
 		
 		mv.addObject("list", ar);//이름 아무거나하고 ar보냄

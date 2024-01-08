@@ -31,8 +31,17 @@
 	</select>
 	
 	<!-- list -->
-	<select id="getList" resultType="com.winter.app.regions.RegionDTO">
-		SELECT * FROM REGIONS
+	<select id="getList" resultType="RegionDTO" parameterType="Pager">
+		<!-- SELECT * FROM REGIONS  이제 열개씩만 나열-->
+		SELECT * FROM
+		(
+			SELECT ROWNUM R, RG.* FROM
+				(
+					SELECT * FROM REGIONS
+					ORDER BY REGION_ID DESC
+				) RG
+		)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
 <!-- <select id="getDetail" resultType="java.util.HashMap" parameterType="com.winter.app.regions.RegionDTO">

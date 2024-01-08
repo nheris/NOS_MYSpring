@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import com.winter.app.util.DBConnector;
+import com.winter.app.util.Pager;
 
 @Repository
 public class RegionDAO {
@@ -51,9 +51,9 @@ public class RegionDAO {
 	
 	
 	//getList, 모든 정보를 출력
-	public List<RegionDTO> getList() throws Exception{
+	public List<RegionDTO> getList(Pager pager) throws Exception{
 		       //Mapper 보내야하는 parameter가 없을 때
-		return sqlSession.selectList(namespace+"getList"); //여러개라 list
+		return sqlSession.selectList(namespace+"getList", pager); //여러개라 list
 		
 		
 //mybatis가 대신해줌
