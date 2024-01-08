@@ -9,18 +9,14 @@ public class Pager {
 	
 	//startRow, lastRow 계산하는 메서드
 	public void makeRow() {
-		//
-		//
-		//
-		//
-		this.startRow=this.getPerPage()*this.getPage()-(getPerPage()-1);
 		this.lastRow=this.getPage()*this.getPerPage();
+		//this.startRow=this.perPage*this.page-9;
+		//this.startRow=this.perPage*page-(perPage-1);
+		//this.startRow=lastRow-perPage+1;
+		this.startRow=(this.getPage()-1)*this.getPerPage()+1;
 	}
 	
 	public Long getPerPage() {
-		if(this.page==null || this.page<1) {
-			this.page=1L;
-		}
 		return perPage;
 	}
 
@@ -29,6 +25,9 @@ public class Pager {
 	}
 
 	public Long getPage() {
+		if(this.page==null || this.page<1) {
+			this.page=1L;
+		}
 		return page;
 	}
 
