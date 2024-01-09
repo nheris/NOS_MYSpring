@@ -21,19 +21,20 @@
 	<h1>Regions List</h1>
 	
 	<div>
-		<form class="row g-3">
-			<div class="col-auto">
-				<select name="kind" class="form-select" aria-label="Default select example">
-				  <option value="kind1">Title</option>
-				  <option value="kind2">Contents</option>
-				  <option value="kind3">Writer</option>
-				  <option value="kind4">Title+Contents+Writer</option>
-				</select>
-			</div>
-			
+		<form class="row g-3" action="./list">
+		  <div class="col-auto">
+		  <select name="kind" class="form-select" aria-label="Default select example">
+			  <option value="kind1">Title</option>
+			  <option value="kind2">Contents</option>
+			  <option value="kind3">Writer</option>
+			  <option value="kind4">Title+Contents+Writer</option>
+		</select>
+		  
+		  </div>		
+		
 		  <div class="col-auto">
 		    <label for="search" class="visually-hidden">Search</label>
-		    <input type="text" class="search" id="inputPassword2" placeholder="Password">
+		    <input type="text" name="search" class="form-control" id="search">
 		  </div>
 		  <div class="col-auto">
 		    <button type="submit" class="btn btn-primary mb-3">검색</button>
@@ -63,29 +64,32 @@
 			
 		</tbody>
 	</table>
-	
+
+
 	<div>
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination">
+		  
 		  	<c:if test="${!pager.start}">
 		    <li class="page-item">
-		      <a class="page-link" href="./list?page=${pager.startNum-1}" aria-label="Previous">
+		      <a class="page-link" href="./list?page=${pager.startNum-1}&search=${pager.search}&kind=${pager.kind}" aria-label="Previous">
 		        <span aria-hidden="true">&laquo;</span>
 		      </a>
 		    </li>
 		    </c:if>
 		    
 		    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-		    <li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+		    <li class="page-item"><a class="page-link" href="./list?page=${i}&search=${pager.search}&kind=${pager.kind}">${i}</a></li>
 		    </c:forEach>
-		   
+
 		   <c:if test="${!pager.last}"> 
 		    <li class="page-item">
-		      <a class="page-link" href="./list?page=${pager.lastNum+1}" aria-label="Next">
+		      <a class="page-link" href="./list?page=${pager.lastNum+1}&search=${pager.search}&kind=${pager.kind}" aria-label="Next">
 		        <span aria-hidden="true">&raquo;</span>
 		      </a>
 		    </li>
 		    </c:if>
+		    
 		  </ul>
 		</nav>
 	</div>

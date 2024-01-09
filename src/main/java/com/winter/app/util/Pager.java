@@ -18,8 +18,9 @@ public class Pager {
 	
 	//검색 관련
 	private String search;
+	private String kind;
 	
-	
+
 
 	//startRow, lastRow 계산하는 메서드
 	public void makeRow() {
@@ -34,7 +35,7 @@ public class Pager {
 		/**
 		 * 페이지 계산 region말고 다른데에도 쓸거니 pager에
 		 */
-		
+		//1. 총 갯수로 총 페이지 수 구하기
 		Long totalPage=0L;
 		totalPage = totalCount/this.getPerPage();
 		
@@ -88,6 +89,13 @@ public class Pager {
 	
 	public void setSearch(String search) {
 		this.search = search;
+	}
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 	
 	

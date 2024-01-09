@@ -48,8 +48,8 @@ public class RegionDAO {
 		
 	}
 	//getTotal 메퍼 아이디랑 동일하게
-	public Long getTotal() throws Exception{
-		return sqlSession.selectOne(namespace+"getTotal");
+	public Long getTotal(Pager pager) throws Exception{
+		return sqlSession.selectOne(namespace+"getTotal", pager);
 	}
 	
 	
