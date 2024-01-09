@@ -38,6 +38,7 @@
 			SELECT ROWNUM R, RG.* FROM
 				(
 					SELECT * FROM REGIONS
+					WHERE REGION_NAME LIKE '%'||#{search}||'%'
 					ORDER BY REGION_ID DESC
 				) RG
 		)
@@ -47,6 +48,7 @@
 	<!-- getTotal / type->config -->
 	<select id="getTotal" resultType="Long">
 		SELECT COUNT(REGION_ID) FROM REGIONS
+		
 	</select>
 	
 	

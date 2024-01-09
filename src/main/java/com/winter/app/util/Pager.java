@@ -16,7 +16,11 @@ public class Pager {
 	//다음 블럭이 없으면 true;
 	private boolean last; //다음값
 	
+	//검색 관련
+	private String search;
 	
+	
+
 	//startRow, lastRow 계산하는 메서드
 	public void makeRow() {
 		this.lastRow=this.getPage()*this.getPerPage();
@@ -30,8 +34,9 @@ public class Pager {
 		/**
 		 * 페이지 계산 region말고 다른데에도 쓸거니 pager에
 		 */
+		
 		Long totalPage=0L;
-		totalPage = totalCount/this.getPerPage(); //pager->this
+		totalPage = totalCount/this.getPerPage();
 		
 		if(totalCount%this.getPerPage()!=0) {
 			//totalPage=totalPage+1;
@@ -63,7 +68,7 @@ public class Pager {
 		this.setStartNum(startNum);
 		this.setLastNum(lastNum);
 		
-		//이전,다음 블럭 유무
+		//5. 이전,다음 블럭 유무
 		if(curBlock ==1) {
 			this.setStart(true);
 		}
@@ -74,6 +79,16 @@ public class Pager {
 		}
 	}
 	
+	public String getSearch() {
+		if(this.search == null) {
+			this.search="";
+		}
+		return search;
+	}
+	
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	
 	
 	//boolean은 get말고 is, Boolaen으로 해도됨
