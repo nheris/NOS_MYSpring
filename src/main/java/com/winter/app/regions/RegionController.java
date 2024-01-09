@@ -108,6 +108,8 @@ public class RegionController {
 		List<RegionDTO> ar = regionService.getList(pager);
 		//ar을 ㅓjsp보내기?위해
 		
+		mv.addObject("pager", pager);
+		
 		mv.addObject("list", ar);//이름 아무거나하고 ar보냄
 		mv.setViewName("regions/list");
 		

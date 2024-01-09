@@ -44,6 +44,14 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
+	<!-- getTotal / type->config -->
+	<select id="getTotal" resultType="Long">
+		SELECT COUNT(REGION_ID) FROM REGIONS
+	</select>
+	
+	
+	
+	
 <!-- <select id="getDetail" resultType="java.util.HashMap" parameterType="com.winter.app.regions.RegionDTO">
 		SELECT REGION_ID, REGION_NAME FROM REGIONS WHERE REGION_ID=#{region_id}
 	</select>
