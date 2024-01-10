@@ -57,6 +57,7 @@ public class RegionController {
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
+													 	//파일 담고있는 클래스, 파라미터 이름과 동일하게 선언	
 	public String add(RegionDTO regionDTO, Model model, MultipartFile photo) throws Exception {
 		int result = regionService.add(regionDTO, photo);
 //		System.out.println(photo.getName()); //파라미터이름

@@ -64,7 +64,8 @@
   		WHERE REGION_ID=#{region_id}
   	</update>
   	
-  	  	<insert id="addFile" parameterType="RegionFileDTO">
+  	<!-- insert file -->
+	<insert id="addFile" parameterType="RegionFileDTO">
   		INSERT INTO REGIONFILES
   		VALUES (FILE_SEQ.NEXTVAL, #{region_id},#{fileName}, #{oriName})
   	</insert>

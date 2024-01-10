@@ -35,7 +35,7 @@
 			  </div>
 			  
 			  <div class="mb-3">
-				<!-- 있다 가정하에 -->
+				<!-- Contents 있다 가정하에 -->
 				<label for="regionContents" class="form-label">RegionContents</label>
 				<textarea id="regionContents" class="form-control"></textarea>
 			  </div>
