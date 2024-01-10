@@ -49,7 +49,7 @@ public class RegionDAOTest extends MyTest{
 	//@Test
 	public void getDetailTest() throws Exception{
 		RegionDTO regionDTO = new RegionDTO();
-		regionDTO.setRegion_id(1);
+		//regionDTO.setRegion_id(1);
 		regionDTO = regionDAO.getDetail(regionDTO);
 		
 		assertNotNull(regionDTO);

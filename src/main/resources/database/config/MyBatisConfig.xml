@@ -14,5 +14,8 @@
   <typeAlias type="java.lang.String" alias="String"/>
   <typeAlias type="java.lang.Long" alias="Long"/>
   
+  <typeAlias type="com.winter.app.regions.RegionFileDTO" alias="RegionFileDTO"/>
+  
+  
   </typeAliases>
   </configuration>

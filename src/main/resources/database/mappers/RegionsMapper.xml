@@ -26,6 +26,7 @@
 	</sql>
 	
 	<sql id="search2">
+   <!-- <bind name="p" value="'%'+parameter.getSearch()+'%'"/> -->
 		<!-- TITLE, CONTENTS, WRITER -->
 			<!-- mybatis. kind4경우? <where></>안에 넣으면 알아서 or,and 지워줌 -->
 		<where>
@@ -63,10 +64,20 @@
   		WHERE REGION_ID=#{region_id}
   	</update>
   	
+  	  	<insert id="addFile" parameterType="RegionFileDTO">
+  		INSERT INTO REGIONFILES
+  		VALUES (FILE_SEQ.NEXTVAL, #{region_id},#{fileName}, #{oriName})
+  	</insert>
+
+  	
   	<!-- insert -->
   	<insert id="add" parameterType="RegionDTO">
+  	          <!-- 멤버변수, dto의 세터 -->
+  		<selectKey keyProperty="region_id" order="BEFORE" resultType="Long">
+  			SELECT EMPLOYEES_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
 		INSERT INTO REGIONS
-		VALUES (EMPLOYEES_SEQ.NEXTVAL, #{region_name})
+		VALUES (#{region_id}, #{region_name})
 	</insert>
 	 
   
