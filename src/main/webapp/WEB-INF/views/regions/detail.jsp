@@ -50,6 +50,10 @@
     		<c:if test="${not empty dto}">
     		<h3>${dto.region_id}</h3>
     		<div>${dto.region_name}</div>
+    		<div>
+    			<h2>FILE</h2>
+    			<a href="/resources/upload/regions/${dto.regionFileDTO.fileName}">${dto.regionFileDTO.oriName}</a>
+    		</div>
     		<a href="">Update</a>
 
 			<button id="up" data-region-id="${dto.region_id}">Update</button>

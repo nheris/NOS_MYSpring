@@ -82,11 +82,34 @@
 	</insert>
 	 
   
-	<!-- detail -->     											<!-- ?에 들어갈 타입 -->
-	<!-- id(구별위해)는 DAO 의 메서드명 -->
-	<select id="getDetail" resultType="com.winter.app.regions.RegionDTO" parameterType="com.winter.app.regions.RegionDTO">
-	 	SELECT REGION_ID, REGION_NAME FROM REGIONS WHERE REGION_ID=#{region_id}
+	<!-- detail -->     											
+	<!-- id(구별위해)는 DAO 의 메서드명 --><!-- SELECT의 결과 ""인 resultMap으로 보내 --><!-- ?에 들어갈 타입 -->
+	<select id="getDetail" resultMap="getDetailResult" parameterType="com.winter.app.regions.RegionDTO">
+	 	SELECT *
+		FROM REGIONS
+			LEFT OUTER JOIN 
+			REGIONFILES
+			USING (REGION_ID)
+		WHERE REGION_ID=#{region_id}
 	</select>
+			
+			  <!-- 최종결과 리턴 타입 -->   <!-- 셀렉트에서 호출 -->
+	<resultMap type="RegionDTO" id="getDetailResult">
+		<!-- PK로 사용하는 column -->
+			<!-- my. column ->property담음 -->
+		    <!-- 셀럭트결과 컬럼명 -->  <!-- RegionDTO속성명,세터이름,property대소구별o -->
+		<id column="REGION_ID" property="region_id"/>
+		<!-- PK 제외 나머지 -->
+		<result column="REGION_NAME" property="region_name"/>
+		<!-- 1:1 -->								<!-- 멤버변수 타입.풀네임인데 config -->
+		<association property="regionFileDTO" javaType="RegionFileDTO">
+			<!-- PK -->
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORINAME" property="oriName"/>
+		</association>
+		<!-- association 밑에 오면 안됨 -->
+	</resultMap>
 	
 	
 	<!-- list -->

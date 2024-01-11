@@ -14,6 +14,7 @@ import com.winter.app.regions.RegionFileDTO;
 public class FileManager {
 	
 	public String fileSave(String path, MultipartFile file) throws Exception{
+		System.out.println(path);
 		
 		// path : realpath
 		File f = new File(path);
@@ -32,7 +33,7 @@ public class FileManager {
 		}
 		
 		//2. 어떤 파일명으로 저장할 것인가? 중복이름안되게끔보장 ,확장자
-			//1) 시간 사용
+			//1) 시간 사용 또는
 		Calendar ca = Calendar.getInstance();
 		String filename = ca.getTimeInMillis()+"_"+file.getOriginalFilename();
 		System.out.println(filename);
@@ -40,10 +41,13 @@ public class FileManager {
 		filename = UUID.randomUUID().toString()+"_"+file.getOriginalFilename();
 		System.out.println(filename);
 		
-		//3. 파일을 저장
-			//1) FileCopyUtils 클래스 사용
 		f = new File(f, filename);
-		FileCopyUtils.copy(file.getBytes(), f);//path 주소로 사진 들어와있는지 확인랴ㅣ
+		//3. 파일을 저장
+			//1) FileCopyUtils 클래스 사용 또는 
+//		FileCopyUtils.copy(file.getBytes(), f);//path 주소로 사진 들어와있는지 확인랴ㅣ
+		
+			//2)MultipartFile 클래스 transferTo() 메서드 사용
+		file.transferTo(f); //어디에 저장할거임?
 		
 		return filename;
 		
