@@ -56,7 +56,7 @@ public class RegionService {
 		dto.setOriName(file.getOriginalFilename());
 		dto.setRegion_id(regionDTO.getRegion_id());
 		result = regionDAO.addFile(dto);
-		
+	
 		return result;
 	}
 	

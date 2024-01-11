@@ -82,7 +82,7 @@
 	</insert>
 	 
   
-	<!-- detail -->     											
+	<!-- detail -->     		 <!-- Join결과처리 ResultType가 아니라resultMap -->					
 	<!-- id(구별위해)는 DAO 의 메서드명 --><!-- SELECT의 결과 ""인 resultMap으로 보내 --><!-- ?에 들어갈 타입 -->
 	<select id="getDetail" resultMap="getDetailResult" parameterType="com.winter.app.regions.RegionDTO">
 	 	SELECT *
@@ -101,7 +101,7 @@
 		<id column="REGION_ID" property="region_id"/>
 		<!-- PK 제외 나머지 -->
 		<result column="REGION_NAME" property="region_name"/>
-		<!-- 1:1 -->								<!-- 멤버변수 타입.풀네임인데 config -->
+		<!-- 1:1 -->								<!-- 멤버변수 타입.풀패키지인데 config -->
 		<association property="regionFileDTO" javaType="RegionFileDTO">
 			<!-- PK -->
 			<id column="FILENUM" property="fileNum"/>
@@ -109,6 +109,12 @@
 			<result column="ORINAME" property="oriName"/>
 		</association>
 		<!-- association 밑에 오면 안됨 -->
+		<!-- 1:N 일때는?-->
+		<!-- <collection property="regionFileDTOs" javaType="List" ofType="RegionFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORINAME" property="oriName"/>
+		</collection> -->
 	</resultMap>
 	
 	
