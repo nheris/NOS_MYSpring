@@ -22,6 +22,10 @@ public class RegionDAO {
 	//연결하려는 mapper의 namespace속성의 값과 동일한 값, 끝에 . 추가	
 	private final String namespace="com.winter.app.regions.RegionDAO.";
 	
+	//File List 1:N
+	public List<RegionFileDTO> getListFiles(RegionDTO regionDTO)throws Exception{
+		return sqlSession.selectList(namespace+"getListFiles", regionDTO);
+	}
 	//delete
 	public int delete(RegionDTO regionDTO) throws Exception {
 		return sqlSession.delete(namespace+"delete", regionDTO);

@@ -58,6 +58,12 @@
   		DELETE REGIONS WHERE REGION_ID=#{region_id}
   	</delete>
   	
+  	<!-- File List 1:N -->
+	<select id="getListFiles" resultType="RegionFileDTO" parameterType="RegionDTO">
+		SELECT * FROM REGIONFILES
+		WHERE REGION_ID=#{region_id}
+	</select>
+  	
   	<!-- update -->
   	<update id="update" parameterType="RegionDTO">
   		UPDATE REGIONS SET REGION_NAME=#{region_name}

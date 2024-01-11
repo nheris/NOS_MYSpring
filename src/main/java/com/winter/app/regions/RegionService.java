@@ -30,8 +30,23 @@ public class RegionService {
 	
 	//delete
 	public int delete(RegionDTO regionDTO) throws Exception {
-		return regionDAO.delete(regionDTO);
+		//파일명 조회
+		List<RegionFileDTO> ar = regionDAO.getListFiles(regionDTO);
+
+		//DB에서 삭제
+		int result =regionDAO.delete(regionDTO);
+
+		//경로 생성
+		String path=servletContext.getRealPath("/resources/upload/regions/");
+
+		for(RegionFileDTO f:ar) {
+			//HDD에서 삭제
+			fileManager.fileDelete(path, f.getFileName());
+		}
+
+		return result;
 	}
+	
 	//update
 	public int update(RegionDTO regionDTO)throws Exception{
 		return regionDAO.update(regionDTO);
